@@ -14,10 +14,10 @@
 更新日志：
 ```
 2021年10月：
-1. iMac（搭载M1芯片）
-2. Mac mini（搭载M1芯片）
-3. MacBook Air （搭载M1芯片）
-4. MacBook Pro （搭载M1芯片）
+1. iMac(搭载M1芯片)
+2. Mac mini (搭载M1芯片)
+3. MacBook Air (搭载M1芯片)
+4. MacBook Pro (搭载M1芯片)
 ```
 
 
