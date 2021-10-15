@@ -104,20 +104,20 @@ NSString *MacBookProPlatform(NSString *platform){
     if ([platform isEqualToString:@"MacBookPro11,4"])    return @"MacBook Pro (Retina, 15-inch, Middle 2015)";
     if ([platform isEqualToString:@"MacBookPro11,5"])    return @"MacBook Pro (Retina, 15-inch, Middle 2015)";
     if ([platform isEqualToString:@"MacBookPro12,1"])    return @"MacBook Pro (13-inch, Early 2015)";
-    if ([platform isEqualToString:@"MacBookPro13,1"])    return @"MacBook Pro (13-inch, 2016, Thunderbolt3 * 2)";
-    if ([platform isEqualToString:@"MacBookPro13,2"])    return @"MacBook Pro (13-inch, 2016, Thunderbolt3 * 4)";
+    if ([platform isEqualToString:@"MacBookPro13,1"])    return @"MacBook Pro (13-inch, 2016, Thunderbolt * 2)";
+    if ([platform isEqualToString:@"MacBookPro13,2"])    return @"MacBook Pro (13-inch, 2016, Thunderbolt * 4)";
     if ([platform isEqualToString:@"MacBookPro13,3"])    return @"MacBook Pro (15-inch, 2016)";
-    if ([platform isEqualToString:@"MacBookPro14,1"])    return @"MacBook Pro (13-inch, 2017, Thunderbolt3 * 2)";
-    if ([platform isEqualToString:@"MacBookPro14,2"])    return @"MacBook Pro (13-inch, 2017, Thunderbolt3 * 4)";
+    if ([platform isEqualToString:@"MacBookPro14,1"])    return @"MacBook Pro (13-inch, 2017, Thunderbolt * 2)";
+    if ([platform isEqualToString:@"MacBookPro14,2"])    return @"MacBook Pro (13-inch, 2017, Thunderbolt * 4)";
     if ([platform isEqualToString:@"MacBookPro14,3"])    return @"MacBook Pro (15-inch, 2017)";
     if ([platform isEqualToString:@"MacBookPro15,1"])    return @"MacBook Pro (15-inch, 2018)";
     if ([platform isEqualToString:@"MacBookPro15,3"])    return @"MacBook Pro (15-inch, 2019)";
-    if ([platform isEqualToString:@"MacBookPro15,2"])    return @"MacBook Pro (13-inch, 2019, Thunderbolt3 * 2)";
-    if ([platform isEqualToString:@"MacBookPro15,4"])    return @"MacBook Pro (13-inch, 2019, Thunderbolt3 * 4)";
+    if ([platform isEqualToString:@"MacBookPro15,2"])    return @"MacBook Pro (13-inch, 2019, Thunderbolt * 2)";
+    if ([platform isEqualToString:@"MacBookPro15,4"])    return @"MacBook Pro (13-inch, 2019, Thunderbolt * 4)";
     if ([platform isEqualToString:@"MacBookPro16,1"])    return @"MacBook Pro (16-inch, 2019)";
     if ([platform isEqualToString:@"MacBookPro16,4"])    return @"MacBook Pro (16-inch, 2019)";
-    if ([platform isEqualToString:@"MacBookPro16,2"])    return @"MacBook Pro (13-inch, 2020, Thunderbolt3 * 4)";
-    if ([platform isEqualToString:@"MacBookPro16,3"])    return @"MacBook Pro (13-inch, 2020, Thunderbolt3 * 2)";
+    if ([platform isEqualToString:@"MacBookPro16,2"])    return @"MacBook Pro (13-inch, 2020, Thunderbolt * 4)";
+    if ([platform isEqualToString:@"MacBookPro16,3"])    return @"MacBook Pro (13-inch, 2020, Thunderbolt * 2)";
     if ([platform isEqualToString:@"MacBookPro17,1"])    return @"MacBook Pro (13-inch, M1, 2020)";
 
     return platform;
@@ -153,7 +153,6 @@ NSString *MacProPlatform(NSString *platform){
 #pragma mark - 设备Model Identifier
 - (NSString *)model{
 
-    
     size_t len = 0;
     sysctlbyname("hw.model", NULL, &len, NULL, 0);
     
@@ -172,26 +171,26 @@ NSString *MacProPlatform(NSString *platform){
     
     NSString *model = [self model];
     
-    if([model rangeOfString:@"iMac"].location != NSNotFound || [model rangeOfString:@"iMacPro"].location != NSNotFound){
+    if([model hasPrefix:@"iMac"] || [model hasPrefix:@"iMacPro"]){
         return iMacPlatform(model);
     }
-    if([model rangeOfString:@"Macmini"].location != NSNotFound){
+    if([model hasPrefix:@"Macmini"]){
         return MacminiPlatform(model);
     }
-    if([model rangeOfString:@"MacPro"].location != NSNotFound){
+    if([model hasPrefix:@"MacPro"]){
         return MacProPlatform(model);
     }
-    if([model rangeOfString:@"MacBookAir"].location != NSNotFound){
+    if([model hasPrefix:@"MacBookAir"]){
         return MacBookAirPlatform(model);
     }
-    if([model rangeOfString:@"MacBookPro"].location != NSNotFound){
+    if([model hasPrefix:@"MacBookPro"]){
         return MacBookProPlatform(model);
     }
-    if([model rangeOfString:@"MacBook"].location != NSNotFound){
+    if([model hasPrefix:@"MacBook"]){
         return MacBookPlatform(model);
     }
     
-    NSLog(@"Unknown Mac: %@", model);
+    NSLog(@"Unknown Identifier: %@", model);
     
     return model;
 }
