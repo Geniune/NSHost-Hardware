@@ -12,8 +12,14 @@
 6. MacBook 系列（2017年停产）
 
 更新日志：
+
 ```
 2021年10月：
+1. MacBook Pro (14英寸)
+2. MacBook Pro (16英寸)
+```
+```
+2020年11月：
 1. iMac (搭载M1芯片)
 2. Mac mini (搭载M1芯片)
 3. MacBook Air (搭载M1芯片)

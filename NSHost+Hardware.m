@@ -36,6 +36,7 @@ NSString *iMacPlatform(NSString *platform){
     if ([platform isEqualToString:@"iMac19,2"])      return @"iMac (Retina 5K, 21.5-inch, 2019)";
     if ([platform isEqualToString:@"iMac20,1"])      return @"iMac (Retina 5K, 27-inch, 2020)";
     if ([platform isEqualToString:@"iMac20,2"])      return @"iMac (Retina 5K, 27-inch, 2020)";
+    //M1
     if ([platform isEqualToString:@"iMac21,1"])      return @"iMac (24-inch, M1, 2021)";
     if ([platform isEqualToString:@"iMac21,2"])      return @"iMac (24-inch, M1, 2021)";
 
@@ -53,6 +54,7 @@ NSString *MacminiPlatform(NSString *platform){
     if ([platform isEqualToString:@"Macmini6,2"])      return @"Mac mini (2012)";
     if ([platform isEqualToString:@"Macmini7,1"])      return @"Mac mini (2014)";
     if ([platform isEqualToString:@"Macmini8,1"])      return @"Mac mini (2018)";
+    //M1
     if ([platform isEqualToString:@"Macmini9,1"])      return @"Mac mini (M1, 2020)";
 
     return platform;
@@ -75,6 +77,7 @@ NSString *MacBookAirPlatform(NSString *platform){
     if ([platform isEqualToString:@"MacBookAir8,1"])      return @"MacBook Air (Retina, 13-inch, 2018)";
     if ([platform isEqualToString:@"MacBookAir8,2"])      return @"MacBook Air (Retina, 13-inch, 2019)";
     if ([platform isEqualToString:@"MacBookAir9,1"])      return @"MacBook Air (Retina, 13-inch, 2020)";
+    //M1
     if ([platform isEqualToString:@"MacBookAir10,1"])    return @"MacBook Air (M1, 2020)";
 
     return platform;
@@ -118,7 +121,13 @@ NSString *MacBookProPlatform(NSString *platform){
     if ([platform isEqualToString:@"MacBookPro16,4"])    return @"MacBook Pro (16-inch, 2019)";
     if ([platform isEqualToString:@"MacBookPro16,2"])    return @"MacBook Pro (13-inch, 2020, Thunderbolt * 4)";
     if ([platform isEqualToString:@"MacBookPro16,3"])    return @"MacBook Pro (13-inch, 2020, Thunderbolt * 2)";
+    //M1
     if ([platform isEqualToString:@"MacBookPro17,1"])    return @"MacBook Pro (13-inch, M1, 2020)";
+    
+    if ([platform isEqualToString:@"MacBookPro18,3"])    return @"MacBook Pro (14-inch, 2021)";
+    if ([platform isEqualToString:@"MacBookPro18,4"])    return @"MacBook Pro (14-inch, 2021)";
+    if ([platform isEqualToString:@"MacBookPro18,1"])    return @"MacBook Pro (16-inch, 2021)";
+    if ([platform isEqualToString:@"MacBookPro18,2"])    return @"MacBook Pro (16-inch, 2021)";
 
     return platform;
 }
