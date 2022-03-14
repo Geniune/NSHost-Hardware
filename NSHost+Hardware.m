@@ -8,6 +8,15 @@
 #import "NSHost+Hardware.h"
 #import <sys/sysctl.h>
 
+#pragma mark - Mac Studio
+NSString *MacStudioPlatform(NSString *platform){
+
+    if ([platform isEqualToString:@"MacStudio1,1"])        return @"Mac Studio (M1 Max)";
+    if ([platform isEqualToString:@"MacStudio1,2"])        return @"Mac Studio (M1 Ultra)";
+
+    return platform;
+}
+
 #pragma mark - iMac
 NSString *iMacPlatform(NSString *platform){
     
@@ -154,27 +163,29 @@ NSString *MacProPlatform(NSString *platform){
 
 @implementation NSHost (Hardware)
 
-#pragma mark - 设备Model Identifier
+#pragma mark - model identifier
 - (NSString *)model{
 
     size_t len = 0;
     sysctlbyname("hw.model", NULL, &len, NULL, 0);
     
-    if (len) {
+    if(len){
         NSMutableData *data = [NSMutableData dataWithLength:len];
         sysctlbyname("hw.model", [data mutableBytes], &len, NULL, 0);
-        
         return [NSString stringWithUTF8String:[data bytes]];
     }
     
     return @"";
 }
 
-#pragma mark - Model Identifier转Generation
+#pragma mark - identifier转generation
 - (NSString *)generation{
     
     NSString *model = [self model];
     
+    if([model hasPrefix:@"Studio"]){
+        return MacStudioPlatform(model);
+    }
     if([model hasPrefix:@"iMac"]){
         return iMacPlatform(model);
     }
