@@ -20,12 +20,14 @@
 1. Mac Studio（搭载M1 Max / M1 Ultra芯片）
 ```
 ```
-2021年10月：
+2021年10月
+
 1. MacBook Pro (14英寸，搭载M1 Pro / M1 Max芯片)
 2. MacBook Pro (16英寸，搭载M1 Pro / M1 Max芯片)
 ```
 ```
-2020年11月：
+2020年11月
+
 1. iMac (搭载M1芯片)
 2. Mac mini (搭载M1芯片)
 3. MacBook Air (搭载M1芯片)
