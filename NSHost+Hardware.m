@@ -11,8 +11,8 @@
 #pragma mark - Mac Studio
 NSString *MacStudioPlatform(NSString *platform){
 
-    if ([platform isEqualToString:@"MacStudio1,1"])        return @"Mac Studio (M1 Max, 2022) ";
-    if ([platform isEqualToString:@"MacStudio1,2"])        return @"Mac Studio (M1 Ultra, 2022)";
+    if ([platform isEqualToString:@"Mac13,1"])        return @"Mac Studio (M1 Max, 2022) ";
+    if ([platform isEqualToString:@"Mac13,2"])        return @"Mac Studio (M1 Ultra, 2022)";
 
     return platform;
 }
@@ -183,9 +183,6 @@ NSString *MacProPlatform(NSString *platform){
     
     NSString *model = [self model];
     
-    if([model hasPrefix:@"MacStudio"]){
-        return MacStudioPlatform(model);
-    }
     if([model hasPrefix:@"iMac"]){
         return iMacPlatform(model);
     }
@@ -203,6 +200,9 @@ NSString *MacProPlatform(NSString *platform){
     }
     if([model hasPrefix:@"MacBook"]){
         return MacBookPlatform(model);
+    }
+    if([model hasPrefix:@"Mac"]){
+        return MacStudioPlatform(model);
     }
     
     NSLog(@"Unknown Identifier: %@", model);
