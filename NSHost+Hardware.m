@@ -76,6 +76,8 @@ NSString *MacBookAirPlatform(NSString *platform){
     if ([platform isEqualToString:@"MacBookAir8,2"])      return @"MacBook Air (Retina, 13-inch, 2019)";
     if ([platform isEqualToString:@"MacBookAir9,1"])      return @"MacBook Air (Retina, 13-inch, 2020)";
     if ([platform isEqualToString:@"MacBookAir10,1"])    return @"MacBook Air (M1, 2020)";
+    if ([platform isEqualToString:@"MacBookAir14,1"])    return @"MacBook Air (M2, 2022)";
+    if ([platform isEqualToString:@"MacBookAir14,2"])    return @"MacBook Air (M2, 2022)";
 
     return platform;
 }
@@ -123,6 +125,8 @@ NSString *MacBookProPlatform(NSString *platform){
     if ([platform isEqualToString:@"MacBookPro18,4"])    return @"MacBook Pro (14-inch, 2021)";
     if ([platform isEqualToString:@"MacBookPro18,1"])    return @"MacBook Pro (16-inch, 2021)";
     if ([platform isEqualToString:@"MacBookPro18,2"])    return @"MacBook Pro (16-inch, 2021)";
+//    TODO:新款M2芯片MacBook Pro的firmware identifier有待确认
+    if ([platform isEqualToString:@"MacBookPro14,7"])    return @"MacBook Pro (13-inch, M2, 2022)";
 
     return platform;
 }
@@ -152,6 +156,15 @@ NSString *MacProPlatform(NSString *platform){
     return platform;
 }
 
+#pragma mark - Mac Studio
+NSString *MacStudioPlatform(NSString *platform){
+    
+    if ([platform isEqualToString:@"Mac13,1"])      return @"Mac Studio (M1 Max)";
+    if ([platform isEqualToString:@"Mac13,2"])      return @"Mac Studio (M1 Ultra)";
+    
+    return platform;
+}
+
 @implementation NSHost (Hardware)
 
 #pragma mark - 设备Model Identifier
@@ -174,7 +187,16 @@ NSString *MacProPlatform(NSString *platform){
 - (NSString *)generation{
     
     NSString *model = [self model];
-    
+
+    if([model hasPrefix:@"MacBookAir"]){
+        return MacBookAirPlatform(model);
+    }
+    if([model hasPrefix:@"MacBookPro"]){
+        return MacBookProPlatform(model);
+    }
+    if([model hasPrefix:@"MacBook"]){
+        return MacBookPlatform(model);
+    }
     if([model hasPrefix:@"iMac"]){
         return iMacPlatform(model);
     }
@@ -184,14 +206,8 @@ NSString *MacProPlatform(NSString *platform){
     if([model hasPrefix:@"MacPro"]){
         return MacProPlatform(model);
     }
-    if([model hasPrefix:@"MacBookAir"]){
-        return MacBookAirPlatform(model);
-    }
-    if([model hasPrefix:@"MacBookPro"]){
-        return MacBookProPlatform(model);
-    }
-    if([model hasPrefix:@"MacBook"]){
-        return MacBookPlatform(model);
+    if([model hasPrefix:@"Mac"]){
+        return MacStudioPlatform(model);
     }
     
     NSLog(@"Unknown Identifier: %@", model);
