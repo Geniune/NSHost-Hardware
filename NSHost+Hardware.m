@@ -134,8 +134,7 @@ NSString *MacBookProPlatform(NSString *platform){
     if ([platform isEqualToString:@"MacBookPro18,4"])    return @"MacBook Pro (14-inch, 2021)";
     if ([platform isEqualToString:@"MacBookPro18,1"])    return @"MacBook Pro (16-inch, 2021)";
     if ([platform isEqualToString:@"MacBookPro18,2"])    return @"MacBook Pro (16-inch, 2021)";
-//    TODO:新款M2芯片MacBook Pro的firmware identifier有待确认
-    if ([platform isEqualToString:@"MacBookPro14,7"])    return @"MacBook Pro (13-inch, M2, 2022)";
+    if ([platform isEqualToString:@"MacBookPro19,1"])    return @"MacBook Pro (13-inch, M2, 2022)";
 
     return platform;
 }
